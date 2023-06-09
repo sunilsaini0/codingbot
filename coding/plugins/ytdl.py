@@ -111,13 +111,13 @@ async def download_video(event):
         
         
   elif video:
-      await v_url.edit(
+      await vtx.edit(
             f"`Preparing to upload video:`\
         \n**{ytdl_data['title']}**\
         \nby *{ytdl_data['uploader']}*"
         )
-      await v_url.client.send_file(
-            v_url.chat_id,
+      await bot.send_file(
+            event.chat_id,
             f"{ytdl_data['id']}.mp4.mp4",
             supports_streaming=True,
             caption=ytdl_data["title"],
