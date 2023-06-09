@@ -118,7 +118,7 @@ async def download_video(event):
         )
       await bot.send_file(
             event.chat_id,
-            f"{ytdl_data['id']}.mp4.mp4",
+            f"{ytdl_data['id']}.mp4",
             supports_streaming=True,
             caption=ytdl_data["title"],
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
@@ -127,7 +127,7 @@ async def download_video(event):
                 )
             ),
         )
-      os.remove(f"{ytdl_data['id']}.mp4.mp4")
+      os.remove(f"{ytdl_data['id']}.mp4")
       await v.delete()       
         
         
