@@ -1,9 +1,7 @@
 import io 
 import asyncio
-
-@bot4.on(events.NewMessage(incoming=True, pattern="/bash ?(.*)
-
-
+from .. import bot
+@bot.on(events.NewMessage(incoming=True, pattern="/bash ?(.*)
 async def _bash(event):
     if event.fwd_from:
         return
