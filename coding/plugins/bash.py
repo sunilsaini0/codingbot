@@ -2,6 +2,7 @@ import io
 import asyncio
 from .. import bot
 from telethon import events
+import time
 
 @bot.on(events.NewMessage(incoming=True, pattern="/bash ?(.*)"))
 async def _bash(event):
