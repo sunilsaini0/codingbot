@@ -83,7 +83,7 @@ async def download_video(event):
       
   c_time = time.time()
       
-if song:
+  if song:
       await vtx.edit(
           f" `Preparing to upload song:`\
       \n**{ytdl_data['title']}**\
