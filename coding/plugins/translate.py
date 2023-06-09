@@ -22,7 +22,7 @@ async def _(event):
   await event.reply(txt)
   vtx=await event.reply("Translating...")
   if event.reply_to_msg_id:
-    previous_message = await event.get_reply_message()
+    previous_message = await vtx.get_reply_message()
     text = previous_message.message 
     lan = input_str or "en"
     
