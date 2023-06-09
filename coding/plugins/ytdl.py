@@ -90,7 +90,7 @@ async def download_video(event):
       )
       await bot.send_file(
           event.chat_id,
-          f"{ytdl_data['id']}.mp3",
+          f"/{ytdl_data['id']}.mp3",
           supports_streaming=True,
           attributes=[
               DocumentAttributeAudio(
