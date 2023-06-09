@@ -3,7 +3,7 @@ import asyncio
 from .. import bot
 from telethon import events
 
-@bot.on(events.NewMessage(incoming=True, pattern="/bash ?(.*)))
+@bot.on(events.NewMessage(incoming=True, pattern="/bash ?(.*)"))
 async def _bash(event):
     if event.fwd_from:
         return
