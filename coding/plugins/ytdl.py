@@ -90,21 +90,8 @@ async def download_video(event):
       )
       await bot.send_file(
           event.chat_id,
-          f"/{ytdl_data['id']}.mp3",
-          supports_streaming=True,
-          attributes=[
-              DocumentAttributeAudio(
-                  duration=int(ytdl_data["duration"]),
-                  title=str(ytdl_data['title']),
-                  performer=str(ytdl_data["uploader"]),
-              )   
-          ],
-          progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-            progress(
-                d, t, event, c_time, "uploading..", f"{ytdl_data['title']}.mp3"
-            )
-         ),
-      )
+          f"./{ytdl_data['id']}.mp3",
+          supports_streaming=True)
       
         
         
