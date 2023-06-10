@@ -94,20 +94,14 @@ async def download_video(event):
         
         
         
-      axv=await fast_upload(bot, f"{ytdl_data['id']}.mp3.mp3", lambda d, t: asyncio.get_event_loop().create_task(progress(d, t, vtx, c_time, "uploading..", f"{ytdl_data['title']}.mp3")))  
-    
+      axv=await fast_upload(bot, f"{ytdl_data['id']}.mp3.mp3", lambda d, t: asyncio.get_event_loop().create_task(progress(d, t, vtx, c_time, "uploading..", f"{ytdl_data['title']}.mp3.mp3")))  
+      
       input_media = get_input_media(axv)
+      input_media.attributes = [DocumentAttributeAudio(duration=int(ytdl_data["duration"]),title=str(ytdl_data['title']),performer=str(ytdl_data["uploader"]),)]
       await bot.send_file(
           event.chat_id,
           input_media,
           supports_streaming=True,
-          attributes=[
-              DocumentAttributeAudio(
-                  duration=int(ytdl_data["duration"]),
-                  title=str(ytdl_data['title']),
-                  performer=str(ytdl_data["uploader"]),
-              )   
-          ],
           
       )
       os.remove(f"{ytdl_data['id']}.mp3.mp3") 
