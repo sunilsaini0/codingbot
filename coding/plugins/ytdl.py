@@ -4,6 +4,8 @@ import os
 import time
 from .. import bot
 from telethon import events
+from FastTelethonhelper import fast_upload
+from telethon.utils import get_input_media
 
 from telethon.tl.types import DocumentAttributeAudio
 from yt_dlp import YoutubeDL
@@ -89,9 +91,17 @@ async def download_video(event):
       \n**{ytdl_data['title']}**\
       \nby *{ytdl_data['uploader']}*"
       )
+        
+      axv=await fast_upload(bot, f"{ytdl_data['id']}.mp3.mp3", progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
+            progress(
+                d, t, vtx, c_time, "uploading..", f"{ytdl_data['title']}.mp3"
+            )
+         ),)  
+    
+      input_media = get_input_media(avx)
       await bot.send_file(
           event.chat_id,
-          f"{ytdl_data['id']}.mp3.mp3",
+          input_media,
           supports_streaming=True,
           attributes=[
               DocumentAttributeAudio(
@@ -100,11 +110,7 @@ async def download_video(event):
                   performer=str(ytdl_data["uploader"]),
               )   
           ],
-          progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-            progress(
-                d, t, vtx, c_time, "uploading..", f"{ytdl_data['title']}.mp3"
-            )
-         ),
+          
       )
       os.remove(f"{ytdl_data['id']}.mp3.mp3") 
       await vtx.delete()    
