@@ -3,7 +3,7 @@ import math
 import os
 import time
 from .. import bot
-from telethon import events
+from telethon import events 
 from FastTelethonhelper import fast_upload
 from telethon.utils import get_input_media
 
@@ -92,11 +92,10 @@ async def download_video(event):
       \nby *{ytdl_data['uploader']}*"
       )
         
-      axv=await fast_upload(bot, f"{ytdl_data['id']}.mp3.mp3", progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-            progress(
-                d, t, vtx, c_time, "uploading..", f"{ytdl_data['title']}.mp3"
-            )
-         ),)  
+        
+         progress_callback
+        
+      axv=await fast_upload(bot, f"{ytdl_data['id']}.mp3.mp3",progress_callback=lambda d, t: asyncio.get_event_loop().create_task(progress(d, t, vtx, c_time, "uploading..", f"{ytdl_data['title']}.mp3")))  
     
       input_media = get_input_media(avx)
       await bot.send_file(
