@@ -96,7 +96,7 @@ async def download_video(event):
         
       axv=await fast_upload(bot, f"{ytdl_data['id']}.mp3.mp3", lambda d, t: asyncio.get_event_loop().create_task(progress(d, t, vtx, c_time, "uploading..", f"{ytdl_data['title']}.mp3")))  
     
-      input_media = get_input_media(avx)
+      input_media = get_input_media(axv)
       await bot.send_file(
           event.chat_id,
           input_media,
