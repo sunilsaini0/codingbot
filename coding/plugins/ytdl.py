@@ -93,7 +93,6 @@ async def download_video(event):
       )
         
         
-         progress_callback
         
       axv=await fast_upload(bot, f"{ytdl_data['id']}.mp3.mp3", lambda d, t: asyncio.get_event_loop().create_task(progress(d, t, vtx, c_time, "uploading..", f"{ytdl_data['title']}.mp3")))  
     
